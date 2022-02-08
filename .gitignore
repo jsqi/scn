@@ -1,0 +1,8 @@
+.idea/
+*.iml
+yd-service-autodeliver/target/
+yd-service-common/target/
+yd-service-config/target/
+yd-service-eureka/target/
+yd-service-gateway/target/
+yd-service-resume/target/

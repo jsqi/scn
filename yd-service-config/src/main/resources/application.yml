@@ -3,16 +3,7 @@ server:
 spring:
   application:
     name: yd-service-config
-  cloud:
-    config:
-      server:
-        git:
-          uri:
-          username:
-          password:
-          search-paths:
-            - yd-config-repo
-        default-label: master
+
 ## eureka
 eureka:
   client:

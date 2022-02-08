@@ -4,6 +4,17 @@ spring:
     port: 5672
     username: guest
     password: geust
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/monkSweeping/scn-config-repo.git
+          username: 13673180154@163.com
+          password: 13673180154jia
+          search-paths:
+            - scn-config-repo
+        default-label: master
+
 management:
   endpoint:
     health:
