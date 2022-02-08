@@ -1,0 +1,33 @@
+server:
+  port: 9006
+spring:
+  application:
+    name: yd-service-config
+  cloud:
+    config:
+      server:
+        git:
+          uri:
+          username:
+          password:
+          search-paths:
+            - yd-config-repo
+        default-label: master
+## eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://EurekaServerA:8761/eureka/,http://EurekaServerB:8762/eureka/
+    ## 每隔30秒拉取一次服务列表
+    registry-fetch-interval-seconds: 30
+  instance:
+    prefer-ip-address: false
+    #instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+    ## 自定义元数据
+    metadata-map:
+      k1: 1
+      k2: 2
+    ## 租约续约时间间隔 默认 30秒
+    lease-renewal-interval-in-seconds: 30
+    ## 租约到期, 服务失效时间，默认90秒，服务超过90秒没有发生心跳，将从注册中心移除
+    lease-expiration-duration-in-seconds: 90

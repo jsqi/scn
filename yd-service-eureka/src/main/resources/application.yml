@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: yd-service-eureka
+
+---
+#第⼀个profile,后期启动spring-boot项⽬时，可通过命令参数指定
+spring:
+  profiles: EurekaServerA
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: EurekaServerA
+  client:
+    # 客户端与EurekaServer交互的地址，如果是集群，也需要写其它Server的地址
+    service-url:
+      defaultZone: http://EurekaServerB:8762/eureka/
+    # ⾃⼰就是服务不需要注册⾃⼰
+    register-with-eureka: true
+    #⾃⼰就是服务不需要从Eureka Server获取服务信息,默认为true，置为false
+    fetch-registry: true
+  ## 定时检查实例是否在一定时间内(由客户端设置的lease-expiration-duration-in-seconds,默认90秒)收到心跳
+  server:
+    eviction-interval-timer-in-ms: 60
+
+---
+spring:
+  profiles: EurekaServerB
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: EurekaServerB
+  client:
+    # 客户端与EurekaServer交互的地址，如果是集群，也需要写其它Server的地址
+    service-url:
+      defaultZone: http://EurekaServerA:8761/eureka/
+    # ⾃⼰就是服务不需要注册⾃⼰
+    register-with-eureka: true
+    #⾃⼰就是服务不需要从Eureka Server获取服务信息,默认为true，置为false
+    fetch-registry: true
+  ## 定时检查实例是否在一定时间内(由客户端设置的lease-expiration-duration-in-seconds,默认90秒)收到心跳
+  server:
+    eviction-interval-timer-in-ms: 60
