@@ -5,6 +5,10 @@ spring:
       profile: dev #后缀名称
       label: master #分支名称
       uri: http://localhost:9006 # 配置中心服务端地址
+  rabbitmq:
+    port: 5672
+    username: admin
+    password: admin
 management:
   endpoints:
     web:
@@ -13,3 +17,5 @@ management:
   endpoint:
     health:
       show-details: always
+    restart:
+      enabled: true
