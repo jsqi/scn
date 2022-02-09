@@ -9,8 +9,8 @@ spring:
       server:
         git:
           uri: https://github.com/monkSweeping/scn-config-repo.git
-          username: 13673180154@163.com
-          password: 13673180154jia
+          username: ${username}
+          password: ${password}
           search-paths:
             - scn-config-repo
         default-label: master
